@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: student-blog-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TRUST_PROXY_HOPS
+        value: "1"
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: student-blog-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: keyvalue
+          name: student-blog-redis
+          property: connectionString
+  - type: keyvalue
+    name: student-blog-redis
+    plan: free
+    ipAllowList: []
+databases:
+  - name: student-blog-db
+    plan: free
+    ipAllowList: []
