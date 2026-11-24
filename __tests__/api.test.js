@@ -148,7 +148,7 @@ test('publishes health and Swagger with the HTTP routes and model schemas', asyn
   const health = await api.get('/health').expect(200);
   expect(health.body.data.status).toBe('ok');
   const docs = await api.get('/api/docs/').expect(200);
-  expect(docs.text).toContain('<title>кт6</title>');
+  expect(docs.text).toContain('Blog Platform API');
   const result = await api.get('/api/docs.json').expect(200);
   expect(result.body.openapi).toBe('3.0.3');
   expect(Object.keys(result.body.paths)).toHaveLength(13);

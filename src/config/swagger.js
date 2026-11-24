@@ -46,7 +46,7 @@ function operation(tag, summary, status, success, { security = bearer, params, b
 
 const doc = {
   openapi: '3.0.3',
-  info: { title: 'кт6', version: '1.0.0', description: 'REST API for users, posts and tags.' },
+  info: { title: 'Blog Platform API', version: '1.0.0', description: 'REST API for users, posts and tags.' },
   servers: [{ url: '/' }],
   paths: {
     '/health': {

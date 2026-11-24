@@ -30,7 +30,7 @@ function createApp({ loginStore, redis } = {}) {
     res.json({ data: { status: 'ok', redis: redis ? 'up' : 'disabled' } });
   });
   app.get('/api/docs.json', (req, res) => res.json(openapi));
-  app.use('/api/docs', swagger.serve, swagger.setup(openapi, { customSiteTitle: openapi.info.title }));
+  app.use('/api/docs', swagger.serve, swagger.setup(openapi, { customSiteTitle: 'Blog Platform API' }));
 
   app.use('/auth', createAuthRouter({ loginStore }));
   app.use('/api/users', authenticate, users.router);
